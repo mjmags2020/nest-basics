@@ -3,6 +3,7 @@ import { Prisma } from "@prisma/client";
 export declare class EmployeesController {
     private readonly employeesService;
     constructor(employeesService: EmployeesService);
+    private readonly logger;
     create(createEmployeeDto: Prisma.EmployeeCreateInput): Promise<{
         id: number;
         name: string;
@@ -11,7 +12,7 @@ export declare class EmployeesController {
         createdAt: Date;
         updatedAt: Date;
     }>;
-    findAll(role?: "INTERN" | "ENGINEER" | "ADMIN"): Promise<{
+    findAll(ip: string, role?: "INTERN" | "ENGINEER" | "ADMIN"): Promise<{
         id: number;
         name: string;
         email: string;

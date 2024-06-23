@@ -1,0 +1,23 @@
+6/23/24, 6:03 PM	InstanceLoader	DatabaseModule dependencies initialized
+6/23/24, 6:03 PM	InstanceLoader	ThrottlerModule dependencies initialized
+6/23/24, 6:03 PM	InstanceLoader	UsersModule dependencies initialized
+6/23/24, 6:03 PM	InstanceLoader	EmployeesModule dependencies initialized
+6/23/24, 6:03 PM	InstanceLoader	AppModule dependencies initialized
+6/23/24, 6:03 PM	InstanceLoader	MyLoggerModule dependencies initialized
+6/23/24, 6:03 PM	RoutesResolver	AppController {/api}:
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api, GET} route
+6/23/24, 6:03 PM	RoutesResolver	UsersController {/api/users}:
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/users, GET} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/users/interns, GET} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/users/:id, GET} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/users, POST} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/users/:id, PATCH} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/users/:id, DELETE} route
+6/23/24, 6:03 PM	RoutesResolver	EmployeesController {/api/employees}:
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/employees, POST} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/employees, GET} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/employees/:id, GET} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/employees/:id, PATCH} route
+6/23/24, 6:03 PM	RouterExplorer	Mapped {/api/employees/:id, DELETE} route
+6/23/24, 6:03 PM	NestApplication	Nest application successfully started
+6/23/24, 6:03 PM	NestFactory	Starting Nest application...

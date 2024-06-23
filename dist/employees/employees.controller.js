@@ -11,19 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var EmployeesController_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.EmployeesController = void 0;
 const common_1 = require("@nestjs/common");
 const employees_service_1 = require("./employees.service");
 const client_1 = require("@prisma/client");
-let EmployeesController = class EmployeesController {
+const throttler_1 = require("@nestjs/throttler");
+const my_logger_service_1 = require("../my-logger/my-logger.service");
+let EmployeesController = EmployeesController_1 = class EmployeesController {
     constructor(employeesService) {
         this.employeesService = employeesService;
+        this.logger = new my_logger_service_1.MyLoggerService(EmployeesController_1.name);
     }
     create(createEmployeeDto) {
         return this.employeesService.create(createEmployeeDto);
     }
-    findAll(role) {
+    findAll(ip, role) {
+        this.logger.log(`Request for ALL Employees\t${ip}`);
         return this.employeesService.findAll(role);
     }
     findOne(id) {
@@ -45,13 +50,16 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], EmployeesController.prototype, "create", null);
 __decorate([
+    (0, throttler_1.SkipThrottle)({ default: false }),
     (0, common_1.Get)(),
-    __param(0, (0, common_1.Query)("role")),
+    __param(0, (0, common_1.Ip)()),
+    __param(1, (0, common_1.Query)("role")),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], EmployeesController.prototype, "findAll", null);
 __decorate([
+    (0, throttler_1.Throttle)({ short: { ttl: 2000, limit: 1 } }),
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)("id")),
     __metadata("design:type", Function),
@@ -73,7 +81,8 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], EmployeesController.prototype, "remove", null);
-exports.EmployeesController = EmployeesController = __decorate([
+exports.EmployeesController = EmployeesController = EmployeesController_1 = __decorate([
+    (0, throttler_1.SkipThrottle)(),
     (0, common_1.Controller)("employees"),
     __metadata("design:paramtypes", [employees_service_1.EmployeesService])
 ], EmployeesController);
